@@ -12,3 +12,7 @@ print(new_string)
 print("----Changing the Letter Case-----")
 print("UpperCase".upper())
 print("LowerCase".lower())
+
+a = 'aavvC'
+a.upper()
+
