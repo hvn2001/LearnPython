@@ -23,8 +23,8 @@ def reverse(lst):
         previous_node = current
         current = next_node
 
-        # Set the last element as the new head node
-        lst.head_node = previous_node
+    # Set the last element as the new head node
+    lst.head_node = previous_node
     return lst
 
 
