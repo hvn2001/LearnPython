@@ -18,8 +18,12 @@ print(List)
 
 print("----------pop()--------------")
 List = [1, 3, 5, 'seven']
+List.append(99)
+List.append(100)
 print(List)
-List.pop(2)
+print('pop at 2: ', List.pop(2))
+print(List)
+print('pop: ', List.pop())  # pop() != pop(0)
 print(List)
 
 print("----------reverse()--------------")
