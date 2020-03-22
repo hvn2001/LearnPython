@@ -1,4 +1,4 @@
-from DataStructures.IntroLinkedLists.SinglyLinkedListInsertion.Node import Node
+from DataStructures.IntroLinkedLists.Node import Node
 
 
 class LinkedList:

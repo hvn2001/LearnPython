@@ -1,5 +1,4 @@
-from DataStructures.IntroLinkedLists.SinglyLinkedListInsertion.LinkedList import LinkedList
-from DataStructures.IntroLinkedLists.SinglyLinkedListInsertion.Node import Node
+from DataStructures.IntroLinkedLists.LinkedList import LinkedList
 
 
 # Access head_node => list.get_head()

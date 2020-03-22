@@ -3,8 +3,8 @@
 # Node class  {int data ; Node next_element;}
 
 # Inserts a value at the end of the list
-from DataStructures.IntroLinkedLists.SinglyLinkedListInsertion.LinkedList import LinkedList
-from DataStructures.IntroLinkedLists.SinglyLinkedListInsertion.Node import Node
+from DataStructures.IntroLinkedLists.LinkedList import LinkedList
+from DataStructures.IntroLinkedLists.Node import Node
 
 # HVN
 # def insert_at_tail(lst, value):

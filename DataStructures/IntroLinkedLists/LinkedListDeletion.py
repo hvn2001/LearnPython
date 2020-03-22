@@ -1,4 +1,4 @@
-from DataStructures.IntroLinkedLists.SinglyLinkedListInsertion.LinkedList import LinkedList
+from DataStructures.IntroLinkedLists.LinkedList import LinkedList
 
 
 def delete_at_head(lst):
