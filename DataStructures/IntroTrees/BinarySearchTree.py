@@ -12,3 +12,9 @@ class BinarySearchTree:
         else:
             self.root = Node(val)
             return True
+
+    def search(self, val):
+        if self.root:
+            return self.root.search(val)
+        else:
+            return False

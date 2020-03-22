@@ -35,3 +35,14 @@ class Node:
             else:
                 self.rightChild = Node(val)
                 return
+
+    def search(self, val):
+        current = self
+        while current is not None:
+            if val < current.val:
+                current = current.leftChild
+            elif val > current.val:
+                current = current.rightChild
+            else:
+                return True
+        return False
