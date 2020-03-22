@@ -61,3 +61,19 @@ class Node:
         else:
             return True
         return False
+
+    def delete(self, val):
+        if val < self.val:  # val is in the left subtree
+            if self.leftChild:
+                self.leftChild = self.leftChild.delete(val)
+            else:
+                print(str(val) + " not found in the tree")
+                return None
+        elif val > self.val:  # val is in the right subtree
+            if self.rightChild:
+                self.rightChild = self.rightChild.delete(val)
+            else:
+                print(str(val) + " not found in the tree")
+                return None
+        else:  # val was found
+            pass
