@@ -21,3 +21,17 @@ class Node:
             parent.leftChild = Node(val)
         else:
             parent.rightChild = Node(val)
+
+    def insert_recursive(self, val):
+        if val < self.val:
+            if self.leftChild:
+                self.leftChild.insert(val)
+            else:
+                self.leftChild = Node(val)
+                return
+        else:
+            if self.rightChild:
+                self.rightChild.insert(val)
+            else:
+                self.rightChild = Node(val)
+                return
