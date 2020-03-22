@@ -63,6 +63,8 @@ class Node:
         return False
 
     def delete(self, val):
+        # if current node's val is less than that of root node,
+        # then only search in left subtree otherwise right subtree
         if val < self.val:  # val is in the left subtree
             if self.leftChild:
                 self.leftChild = self.leftChild.delete(val)
