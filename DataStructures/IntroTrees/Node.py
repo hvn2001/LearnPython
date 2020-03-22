@@ -85,3 +85,8 @@ class Node:
                 tmp = self.rightChild
                 self = None
                 return tmp
+            # deleting node with left child
+            elif self.rightChild is None:
+                tmp = self.leftChild
+                self = None
+                return tmp
