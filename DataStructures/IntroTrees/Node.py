@@ -90,3 +90,14 @@ class Node:
                 tmp = self.leftChild
                 self = None
                 return tmp
+            # deleting a node with two children
+            else:
+                # first get the inorder successor
+                current = self.rightChild
+                # loop down to find the leftmost leaf
+                while current.leftChild is not None:
+                    current = current.leftChild
+                self.val = current.val
+                self.rightChild = self.rightChild.delete(current.val)
+
+        return self
