@@ -70,13 +70,13 @@ class Node:
                 self.leftChild = self.leftChild.delete(val)
             else:
                 print(str(val) + " not found in the tree")
-                return None
+                return self
         elif val > self.val:  # val is in the right subtree
             if self.rightChild:
                 self.rightChild = self.rightChild.delete(val)
             else:
                 print(str(val) + " not found in the tree")
-                return None
+                return self
         else:  # val was found
             # deleting node with no children
             if self.leftChild is None and self.rightChild is None:

@@ -86,3 +86,7 @@ display(BST.root)
 BST.delete(10)
 print("after deletion:")
 display(BST.root)
+
+BST.delete(6)
+print("after deletion:")
+display(BST.root)
