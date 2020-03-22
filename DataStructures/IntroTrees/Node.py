@@ -76,4 +76,7 @@ class Node:
                 print(str(val) + " not found in the tree")
                 return None
         else:  # val was found
-            pass
+            # deleting node with no children
+            if self.leftChild is None and self.rightChild is None:
+                self = None
+                return None
