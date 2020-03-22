@@ -25,13 +25,13 @@ class Node:
     def insert_recursive(self, val):
         if val < self.val:
             if self.leftChild:
-                self.leftChild.insert(val)
+                self.leftChild.insert_recursive(val)
             else:
                 self.leftChild = Node(val)
                 return
         else:
             if self.rightChild:
-                self.rightChild.insert(val)
+                self.rightChild.insert_recursive(val)
             else:
                 self.rightChild = Node(val)
                 return
@@ -45,4 +45,19 @@ class Node:
                 current = current.rightChild
             else:
                 return True
+        return False
+
+    def search_recursive(self, val):
+        if val < self.val:
+            if self.leftChild:
+                return self.leftChild.search_recursive(val)
+            else:
+                return False
+        elif val > self.val:
+            if self.rightChild:
+                return self.rightChild.search_recursive(val)
+            else:
+                return False
+        else:
+            return True
         return False

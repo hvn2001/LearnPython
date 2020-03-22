@@ -15,6 +15,6 @@ class BinarySearchTree:
 
     def search(self, val):
         if self.root:
-            return self.root.search(val)
+            return self.root.search_recursive(val)
         else:
             return False
