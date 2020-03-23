@@ -8,5 +8,7 @@ class HashEntry:
         self.nxt = None
 
 
+'''
 entry = HashEntry(3, "Educative")
 print(str(entry.key) + ", " + entry.value)
+'''
