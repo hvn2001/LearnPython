@@ -52,6 +52,31 @@ class HashTable:
         self.bucket = new_bucket
         self.slots = new_slots
 
+    def insert(self, key, value):
+        # Find the node with the given key
+        b_index = self.get_index(key)
+        if self.bucket[b_index] is None:
+            self.bucket[b_index] = HashEntry(key, value)
+            print(key, "-", value, "inserted at index:", b_index)
+            self.size += 1
+        else:
+            head = self.bucket[b_index]
+            while head is not None:
+                if head.key is key:
+                    head.value = value
+                    break
+                elif head.nxt is None:
+                    head.nxt = HashEntry(key, value)
+                    print(key, "-", value, "inserted at index:", b_index)
+                    self.size += 1
+                    break
+                head = head.nxt
+
+        load_factor = float(self.size) / float(self.slots)
+        # Checks if 60% of the entries in table are filled, threshold = 0.6
+        if load_factor >= self.threshold:
+            self.resize()
+
 
 '''
 ht = HashTable()
