@@ -76,13 +76,25 @@ class HashTable:
         # Checks if 60% of the entries in table are filled, threshold = 0.6
         if load_factor >= self.threshold:
             self.resize()
+        # Return a value for a given key
+
+    def search(self, key):
+        # Find the node with the given key
+        b_index = self.get_index(key)
+        head = self.bucket[b_index]
+        # Search key in the slots
+        while head is not None:
+            if head.key is key:
+                return head.value
+            head = head.nxt
+        # If key not found
+        return None
 
 
 '''
 ht = HashTable()
 print(ht.is_empty())
 '''
-
 
 # Hash Function
 '''
