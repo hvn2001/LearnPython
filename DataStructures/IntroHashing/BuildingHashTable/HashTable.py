@@ -90,6 +90,36 @@ class HashTable:
         # If key not found
         return None
 
+    # Remove a value based on a key
+    def delete(self, key):
+        # Find index
+        b_index = self.get_index(key)
+        head = self.bucket[b_index]
+        # If key exists at first slot
+        if head.key is key:
+            self.bucket[b_index] = head.nxt
+            print(key, "-", head.value, "deleted")
+            # Decrease the size by one
+            self.size -= 1
+            return self
+        # Find the key in slots
+        prev = None
+        while head is not None:
+            # If key exists
+            if head.key is key:
+                prev.nxt = head.nxt
+                print(key, "-", head.value, "deleted")
+                # Decrease the size by one
+                self.size -= 1
+                return
+            # Else keep moving in chain
+            prev = head
+            head = head.nxt
+
+        # If key does not exist
+        print("Key not found")
+        return
+
 
 '''
 ht = HashTable()
