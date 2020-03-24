@@ -38,8 +38,10 @@ for name, group in groups:
 print('->Sum: \n{}\n'.format(groups.sum()))
 
 print('------Ex: ------')
+'''
 year_group = df.groupby('yearID')
 year_stats = year_group.sum()
 hr_2017 = year_stats.loc[2017, 'HR']
 year_team_group = df.groupby(['yearID', 'teamID'])
 year_team_stats = year_team_group.sum()
+'''
