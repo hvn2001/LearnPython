@@ -155,8 +155,8 @@ df.to_json('data_out.json')
 df2 = pd.read_json('data_out.json')
 print('{}\n'.format(df2))
 
-df.to_json('data.json', orient='index')
-df2 = pd.read_json('data_out.json')
+df.to_json('data_out2.json', orient='index')  # write to file
+df2 = pd.read_json('data_out2.json')
 print('{}\n'.format(df2))
 df2 = pd.read_json('data_out.json', orient='index')
 print('{}\n'.format(df2))
