@@ -99,3 +99,64 @@ print('{}\n'.format(df2))
 jack doe   4  1B
 tom june  31   P
 '''
+mlb_df = pd.read_csv('data.csv')
+print('------B. Writing to files------')
+print('------CSV------')
+# Predefined mlb_df
+print('{}\n'.format(mlb_df))
+'''
+   HR       name pos
+0  17  joe smith  2B
+1  28  alan west   C
+2  19   john doe   P
+'''
+
+# Index is kept when writing
+mlb_df.to_csv('data_out.csv')
+df = pd.read_csv('data_out.csv')
+print('{}\n'.format(df))
+'''
+   Unnamed: 0  HR       name pos
+0           0  17  joe smith  2B
+1           1  28  alan west   C
+2           2  19   john doe   P
+'''
+
+# Index is not kept when writing
+mlb_df.to_csv('data_out.csv', index=False)
+df = pd.read_csv('data_out.csv')
+print('{}\n'.format(df))
+'''
+   HR       name pos
+0  17  joe smith  2B
+1  28  alan west   C
+2  19   john doe   P
+'''
+
+print('------Excel------')
+mlb_df1 = pd.read_excel('data.xlsx')
+mlb_df2 = pd.read_excel('data.xlsx', sheet_name=1)
+print('{}\n'.format(mlb_df1))
+print('{}\n'.format(mlb_df2))
+
+with pd.ExcelWriter('data_out.xlsx') as writer:
+    mlb_df1.to_excel(writer, index=False, sheet_name='NYY1')
+    mlb_df2.to_excel(writer, index=False, sheet_name='BOS1')
+
+df_dict = pd.read_excel('data_out.xlsx', sheet_name=None)
+print(df_dict.keys())
+print('{}\n'.format(df_dict['BOS1']))
+
+print('------JSON------')
+df = pd.read_json('data.json')
+print('{}\n'.format(df))
+
+df.to_json('data_out.json')
+df2 = pd.read_json('data_out.json')
+print('{}\n'.format(df2))
+
+df.to_json('data.json', orient='index')
+df2 = pd.read_json('data_out.json')
+print('{}\n'.format(df2))
+df2 = pd.read_json('data_out.json', orient='index')
+print('{}\n'.format(df2))
