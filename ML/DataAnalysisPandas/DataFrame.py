@@ -99,6 +99,12 @@ print('------D. Dropping data------')
 df = pd.DataFrame({'c1': [1, 2], 'c2': [3, 4],
                    'c3': [5, 6]},
                   index=['r1', 'r2'])
+'''
+    c1  c2  c3
+r1   1   3   5    
+r2   2   4   6
+'''
+
 # Drop row r1
 df_drop = df.drop(labels='r1')
 print('{}\n'.format(df_drop))
@@ -108,7 +114,7 @@ r2   2   4   6
 '''
 
 # Drop columns c1, c3
-df_drop = df.drop(labels=['c1', 'c3'], axis=1)
+df_drop = df.drop(labels=['c1', 'c3'], axis=1)  # axis is mandatory because use labels=['c1',..]
 print('{}\n'.format(df_drop))
 '''
     c2
@@ -137,3 +143,9 @@ print('{}\n'.format(df_drop))
     c1  c3
 r1   1   5
 '''
+
+print('------Ex: ------')
+df = pd.DataFrame({'c1': [0, 1, 2, 3], 'c2': [5, 6, 7, 8]}, index=['r1', 'r2', 'r3', 'r4'])
+row_df = pd.DataFrame([[9, 9]], columns=['c1', 'c2'], index=['r5'])
+df_app = df.append(row_df)
+df_drop = df_app.drop(labels='r2')
