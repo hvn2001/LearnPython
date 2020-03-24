@@ -12,7 +12,15 @@ from sklearn.preprocessing import Normalizer
 normalizer = Normalizer()
 transformed = normalizer.fit_transform(data)
 print('{}\n'.format(repr(transformed)))
+'''
+array([[4, 1, 2, 2],
+       [3, 4, 0, 0],
+       [7, 5, 9, 2]])
 
+array([[0.8       , 0.2       , 0.4       , 0.4       ],
+       [0.6       , 0.8       , 0.        , 0.        ],
+       [0.55513611, 0.39652579, 0.71374643, 0.15861032]])
+'''
 print('------Ex: ------')
 
 
