@@ -85,3 +85,9 @@ b    2
 c    3
 dtype: int64
 '''
+
+print('------Ex: ------')
+s1 = pd.Series([1, 3, 5.2])
+s2 = s1 * [0.1, 0.2, 0.3]
+s3 = pd.Series([1, 3, 8, np.nan], index=['a', 'b', 'c', 'd'])
+s4 = pd.Series({'a': 0, 'b': 1, 'c': 2})
