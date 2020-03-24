@@ -160,3 +160,15 @@ df2 = pd.read_json('data_out2.json')
 print('{}\n'.format(df2))
 df2 = pd.read_json('data_out.json', orient='index')
 print('{}\n'.format(df2))
+
+'''
+stats_df = pd.read_csv('stats.csv')
+salary_df = pd.read_csv('salary.csv')
+
+
+df = pd.merge(stats_df, salary_df)
+
+
+df.to_csv('out.csv', index=False)
+
+'''
