@@ -18,11 +18,12 @@ print('{}\n'.format(df))
 1  6
 '''
 
-df = pd.DataFrame([[5, 6]])
+df = pd.DataFrame([[5, 6], [50, 60]])
 print('{}\n'.format(df))
 '''
-   0  1
-0  5  6
+    0   1
+1  50  60
+1  50  60
 '''
 
 df = pd.DataFrame([[5, 6], [1, 3]],
@@ -130,10 +131,9 @@ r1   1   5
 r2   2   6
 '''
 
-df.drop(index='r2', columns='c2')
+df_drop = df.drop(index='r2', columns='c2')
 print('{}\n'.format(df_drop))
 '''
     c1  c3
 r1   1   5
-r2   2   6
 '''
