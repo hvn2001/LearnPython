@@ -148,7 +148,9 @@ print(df_dict.keys())
 print('{}\n'.format(df_dict['BOS1']))
 
 print('------JSON------')
-df = pd.read_json('data.json')
+df = pd.DataFrame({'name': ['Mo', 'Susu', 'Ro', 'HVN'],
+                   'pos': ['VN', 'HCM', 'VN', 'HCM'],
+                   'year': [2000, 2004, 2008, 2003]})
 print('{}\n'.format(df))
 
 df.to_json('data_out.json')
@@ -157,9 +159,9 @@ print('{}\n'.format(df2))
 
 df.to_json('data_out2.json', orient='index')  # write to file
 df2 = pd.read_json('data_out2.json')
-print('{}\n'.format(df2))
+print('data_out2: \n {}\n'.format(df2))
 df2 = pd.read_json('data_out.json', orient='index')
-print('{}\n'.format(df2))
+print('data_out(orient=''index''): \n{}\n'.format(df2))
 
 '''
 stats_df = pd.read_csv('stats.csv')
