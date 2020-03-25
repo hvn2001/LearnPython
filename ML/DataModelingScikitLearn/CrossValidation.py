@@ -7,7 +7,8 @@ data = pd.DataFrame([[2100, 800],
                      [2000, 800],
                      [2300, 810]],
                     )
-labels = pd.DataFrame([10.99, 12.5, 9.99, 10.99, 11.99]).values.ravel()  # HVN ?
+# labels = pd.DataFrame([10, 12, 9, 10, 11]).values.ravel()  # HVN ? 2 x '10' -> ValueError: n_splits=3 cannot be greater than the number of members in each class.
+labels = pd.DataFrame([10, 12, 9, 10, 10]).values.ravel()
 
 from sklearn import linear_model
 from sklearn.model_selection import cross_val_score
@@ -27,7 +28,7 @@ from sklearn.model_selection import cross_val_score
 
 reg = linear_model.LinearRegression()
 # Predefined data and labels
-cv_score = cross_val_score(reg, data, labels, cv=4)  # k = 4
+cv_score = cross_val_score(reg, data, labels, cv=4)  # k = 4  #  UndefinedMetricWarning: R^2 score is not well-defined with less than two samples.
 
 print('{}\n'.format(repr(cv_score)))
 
