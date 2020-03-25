@@ -7,7 +7,7 @@ data = pd.DataFrame([[2100, 800],
                      [2000, 800],
                      [2300, 810]],
                     )
-labels = pd.DataFrame([10.99, 12.5, 9.99, 10.99, 11.99])
+labels = pd.DataFrame([10.99, 12.5, 9.99, 10.99, 11.99]).values.ravel()  # HVN ?
 
 from sklearn import linear_model
 from sklearn.model_selection import cross_val_score
