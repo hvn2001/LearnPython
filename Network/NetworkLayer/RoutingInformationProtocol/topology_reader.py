@@ -1,5 +1,5 @@
-from Network.NetworkLayer.port import port_link, port
-from Network.NetworkLayer.router import router
+from Network.NetworkLayer.RoutingInformationProtocol.port import port_link, port
+from Network.NetworkLayer.RoutingInformationProtocol.router import router
 
 
 def topology_to_routers(topology):

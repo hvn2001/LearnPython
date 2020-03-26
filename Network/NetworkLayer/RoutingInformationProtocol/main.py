@@ -1,4 +1,4 @@
-from Network.NetworkLayer.topology_reader import topology_to_routers
+from Network.NetworkLayer.RoutingInformationProtocol.topology_reader import topology_to_routers
 
 
 def main():

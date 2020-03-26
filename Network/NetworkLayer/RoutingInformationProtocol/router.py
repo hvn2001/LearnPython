@@ -1,4 +1,4 @@
-from Network.NetworkLayer.rip_packet import RIP_entry, RIP_packet
+from Network.NetworkLayer.RoutingInformationProtocol.rip_packet import RIP_entry, RIP_packet
 
 
 class router_base:
