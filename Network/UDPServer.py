@@ -6,3 +6,6 @@ port = 3000
 hostname = '127.0.0.1'
 s.bind((hostname, port))  # Binding the socket to a port and IP address
 print('Listening at {}'.format(s.getsockname()))  # Printing the IP address and port of socket
+
+while True:
+    # The code to handle clients will go here
