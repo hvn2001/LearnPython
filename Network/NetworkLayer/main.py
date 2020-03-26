@@ -1,9 +1,4 @@
-from router import router
-from rip_packet import RIP_entry
-from rip_packet import RIP_packet
-from port import port
-from port import port_link
-from topology_reader import topology_to_routers
+from Network.NetworkLayer.topology_reader import topology_to_routers
 
 
 def main():

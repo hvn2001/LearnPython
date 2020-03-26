@@ -1,8 +1,5 @@
-from router import router_base
-from router import router
-from port import port_link
-from port import port
-from rip_packet import RIP_entry
+from Network.NetworkLayer.port import port_link, port
+from Network.NetworkLayer.router import router
 
 
 def topology_to_routers(topology):

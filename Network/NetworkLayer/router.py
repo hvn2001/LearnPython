@@ -1,7 +1,4 @@
-from rip_packet import RIP_entry
-from rip_packet import RIP_packet
-from port import port
-from port import port_link
+from Network.NetworkLayer.rip_packet import RIP_entry, RIP_packet
 
 
 class router_base:
