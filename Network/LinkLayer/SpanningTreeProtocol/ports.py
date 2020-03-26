@@ -6,7 +6,10 @@ class ports():
 
     def get_reachable_bridge_ID(self, bridges_dict, calling_bridge_id):
         bridge_id_list = []
-        # Write your code here
+        for b in bridges_dict:
+            for p in bridges_dict[b].port_list:
+                if p.segment_number == self.segment_number and bridges_dict[b].bridge_ID != calling_bridge_id:
+                    bridge_id_list.append(b)
         return bridge_id_list
 
     def get_port_state(self):

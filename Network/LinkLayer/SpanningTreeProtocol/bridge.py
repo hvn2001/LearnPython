@@ -37,24 +37,51 @@ class bridge:
     def find_best_BPDUs_received(self, bridges_dict):
         # Select best BPDU at each bridge
         best_BPDUs_recvd = {}  # Bridge Number : BPDU
-        # Write your code here
+        best_bpdu = 0
+        for sending_brg_id in self.receive_queue:
+            if (len(self.receive_queue[sending_brg_id]) > 0):
+                best_bpdu = self.receive_queue[sending_brg_id][0]
+                for bpdu in self.receive_queue[sending_brg_id]:
+                    if is_better(bpdu, best_bpdu):
+                        best_bpdu = bpdu
+                best_BPDUs_recvd[sending_brg_id] = best_bpdu
+        self.initialize_recv_queue(bridges_dict)
         return best_BPDUs_recvd
 
     def update_ports(self, bridges_dict, best_BPDUs_recvd):
-        # Write your code here
-        pass
+        for sending_brg_id in best_BPDUs_recvd:
+            if sending_brg_id is not self.config_BPDU[0]:
+                if self.port_list[self.get_port(sending_brg_id, bridges_dict)].port_type != 2:
+                    pn = self.get_port(sending_brg_id, bridges_dict)
+                    if (is_better(best_BPDUs_recvd[sending_brg_id], self.get_config_BPDU_at_port(pn))):
+                        self.port_list[self.get_port(sending_brg_id, bridges_dict)].port_type = 0
+                    else:
+                        self.port_list[self.get_port(sending_brg_id, bridges_dict)].port_type = 1
 
     def elect_root(self, bridges_dict, best_BPDUs_recvd):
-        # Write your code here
-        pass
+        for sending_brg_id in best_BPDUs_recvd:
+            if (best_BPDUs_recvd[sending_brg_id][0] < self.config_BPDU[0]):
+                # New root bridge
+                self.config_BPDU[0] = best_BPDUs_recvd[sending_brg_id][0]
+                self.config_BPDU[1] = best_BPDUs_recvd[sending_brg_id][1] + 1
+                self.config_BPDU[2] = self.bridge_ID
+                self.config_BPDU[3] = self.get_port(sending_brg_id, bridges_dict)
+                if (self.get_root_port_id() is not None):
+                    self.port_list[self.get_root_port_id()].port_type = 1
+                self.port_list[self.get_port(sending_brg_id, bridges_dict)].port_type = 2
 
     def send_BPDUs(self, bridges_dict):
-        # Write your code here
+        # Find all neighbors
+        for p in self.port_list:
+            if (p.get_port_state() > 0):  # If sending port
+                # Send to all bridges on that segment
+                for b in p.get_reachable_bridge_ID(bridges_dict, self.bridge_ID):
+                    pn = self.get_port(b, bridges_dict)
+                    bridges_dict[b].receive_queue[self.bridge_ID].append(self.get_config_BPDU_at_port(pn))
         return (bridges_dict)
 
     def receive_BPDUs(self, bridges_dict):
-        # These functions are here to give you some structure
-        # Feel free to ignore them and implement your own
+        # Update the bridge's state according to the best BPDUs received
         # Find best BPDU received from each bridge
         best_BPDUs_recvd = self.find_best_BPDUs_received(bridges_dict)
 

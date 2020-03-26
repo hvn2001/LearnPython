@@ -5,6 +5,7 @@ def simulator(bridges, end_time):
     # Initializing bridges
     bridges_dict = {}
     bridges_dict = bridge_initializer(bridges)  # bridge ID : bridge
+
     print("before STP")
     for b in bridges_dict:
         bridges_dict[b].print_bridge()
@@ -16,8 +17,6 @@ def simulator(bridges, end_time):
         for b in bridges_dict:
             bridges_dict = bridges_dict[b].receive_BPDUs(bridges_dict)
 
-    print("Actual bridges after STP")
+    print("after STP")
     for b in bridges_dict:
         bridges_dict[b].print_bridge()
-
-    return bridges_dict
