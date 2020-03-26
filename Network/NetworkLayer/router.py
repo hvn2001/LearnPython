@@ -61,9 +61,36 @@ class router_base:
 
 class router(router_base):
     def send_RIP_packets(self, routers):
-        # Write your code here
+        self.rip_packet = RIP_packet(self.rip_entries)
+        for i in range(len(routers)):  # Find all neighbors and send then RIP packet
+            for j in range(len(self.ports)):
+                if routers[i].IP_address == self.ports[j].link.dest_IP_address:
+                    routers = routers[i].receive_RIP_packets(self.rip_packet, self.ports[j].link, routers,
+                                                             self.IP_address)
         return routers
 
     def receive_RIP_packets(self, rip_packet, link_send_on, routers, next_hop_IP):
-        # Write your code here
+        found = 0
+        new_rip_entries = []
+        for i in range(len(rip_packet.rip_entries)):
+            for j in range(len(self.rip_entries)):
+                if (rip_packet.rip_entries[i].dest_IP_address == self.rip_entries[
+                    j].dest_IP_address):  # If entry exists
+                    found = 1
+                    new_cost = link_send_on.cost + rip_packet.rip_entries[i].cost
+                    if (self.rip_entries[j].next_hop_IP == next_hop_IP and self.rip_entries[
+                        j].cost != new_cost):  # If next hop is listed as the router received from
+                        self.rip_entries[j].cost = min(16, new_cost)
+                        break
+                    elif (new_cost < self.rip_entries[j].cost):
+                        self.rip_entries[j].cost = new_cost
+                        self.rip_entries[j].next_hop_IP = next_hop_IP
+                        break
+            # If entry does not already exist
+            if (not found):
+                new_rip_entries.append(
+                    RIP_entry(link_send_on.dest_port_IP, rip_packet.rip_entries[i].cost + link_send_on.cost,
+                              rip_packet.rip_entries[i].dest_IP_address, next_hop_IP))
+            found = 0
+        self.rip_entries.extend(new_rip_entries)
         return routers
