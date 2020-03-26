@@ -1,5 +1,18 @@
 import argparse, socket
 
+'''
+bytes_sent = 0 # No bytes initially sent
+while bytes_sent < len(message): # If number of bytes sent is less than the amount of data
+  message_left = message[bytes_sent:] # Indexing and storing the part of the message remaining
+  bytes_sent += sock.send(message_left) # Sending remaining message
+  
+  
+Luckily,  Python has own implementation of this in a function called sendall(). 
+It ensures that all of the data gets sent. 
+Check out line 52 in the TCP server-client program above to see how it is used  
+ sock.sendall(b'Greetings, server')
+'''
+
 
 def recvall(sock, length):
     data = b''
