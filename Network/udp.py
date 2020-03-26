@@ -19,19 +19,26 @@ def server(port):
 
 def client(port):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect('127.0.0.1', port)
     message = input('Input lowercase sentence:')
     data = message.encode('ascii')
-    s.sendto(data, ('127.0.0.1', port))
+    s.send(data)
     print('The OS assigned the address {} to me'.format(s.getsockname()))
-    data, address = s.recvfrom(MAX_SIZE_BYTES)
+    data = s.recv(MAX_SIZE_BYTES)
     text = data.decode('ascii')
-    print('The server {} replied with {!r}'.format(address, text))
+    print('The server replied with {!r}'.format(text))
 
 
 '''
 Input lowercase sentence:aaa
 The OS assigned the address ('0.0.0.0', 50903) to me
 The server ('127.0.0.1', 3000) replied with 'AAA'
+'''
+
+'''
+Input lowercase sentence:aaa
+The OS assigned the address ('127.0.0.1', 61042) to me
+The server replied with 'AAA'
 '''
 
 if __name__ == '__main__':
