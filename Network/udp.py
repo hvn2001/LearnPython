@@ -28,6 +28,12 @@ def client(port):
     print('The server {} replied with {!r}'.format(address, text))
 
 
+'''
+Input lowercase sentence:aaa
+The OS assigned the address ('0.0.0.0', 50903) to me
+The server ('127.0.0.1', 3000) replied with 'AAA'
+'''
+
 if __name__ == '__main__':
     funcs = {'client': client, 'server': server}
     parser = argparse.ArgumentParser(description='UDP client and server')
