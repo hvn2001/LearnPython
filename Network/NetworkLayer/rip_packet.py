@@ -33,10 +33,6 @@ class RIP_entry:
         print(str(self.port_IP) + " | " + str(self.dest_IP_address) + " | " + str(self.next_hop_IP) + " | " + str(
             self.cost))
 
-    def return_rip_entry(self):
-        return (str(self.port_IP) + " | " + str(self.dest_IP_address) + " | " + str(self.next_hop_IP) + " | " + str(
-            self.cost))
-
 
 class RIP_packet:
     def __init__(self, rip_entries):
