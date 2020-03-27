@@ -15,3 +15,7 @@ def display(list_head):
         print(str(list_head.data) + ", ", end=" ")
         list_head = list_head.next
     print('\n')
+
+
+def is_equal(list1, list1_expected):
+    return True
